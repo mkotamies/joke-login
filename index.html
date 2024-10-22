@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto"
+      rel="stylesheet"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Joke Login</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="username" class="movable-element">
+      <input type="text" placeholder="Enter your email" class="input-box" />
+    </div>
+    <div id="password" class="movable-element">
+      <input
+        type="password"
+        placeholder="Enter your password"
+        class="input-box"
+      />
+    </div>
+    <div id="login-button" class="movable-element">
+      <button>Login</button>
+    </div>
+
+    <script>
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Tab" || e.keyCode === 9) {
+          alert("Nice try ;)");
+          e.preventDefault();
+        }
+      });
+
+      function moveRandomly(element) {
+        const maxX = window.innerWidth - element.offsetWidth;
+        const maxY = window.innerHeight - element.offsetHeight;
+
+        const randomX = Math.random() * maxX;
+        const randomY = Math.random() * maxY;
+
+        element.style.left = `${randomX}px`;
+        element.style.top = `${randomY}px`;
+
+        requestAnimationFrame(() => {
+          setTimeout(() => moveRandomly(element), Math.random() * 666);
+        });
+      }
+
+      const username = document.getElementById("username");
+      const password = document.getElementById("password");
+      const loginButton = document.getElementById("login-button");
+
+      moveRandomly(username);
+      moveRandomly(password);
+      moveRandomly(loginButton);
+    </script>
+  </body>
+</html>
